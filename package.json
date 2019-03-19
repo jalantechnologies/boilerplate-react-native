@@ -14,13 +14,14 @@
   },
   "lint-staged": {
     "src/**/*.ts*": [
-        "npm run lint",
-        "git add"
+      "npm run lint",
+      "git add"
     ]
   },
   "dependencies": {
     "react": "16.8.3",
-    "react-native": "0.59.1"
+    "react-native": "0.59.1",
+    "react-native-localize": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
