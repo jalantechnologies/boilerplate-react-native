@@ -5,8 +5,12 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "tslint 'src/**/*.{ts,tsx}'",
-    "precommit": "lint-staged"
+    "lint": "tslint 'src/**/*.{ts,tsx}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{ts,tsx}": [
