@@ -3,7 +3,9 @@ package com.boilerplatereactnative;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
 import com.reactcommunity.rnlocalize.RNLocalizePackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -24,7 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNLocalizePackage()
+            new RNFirebasePackage(),
+            new RNLocalizePackage(), new RNFirebaseCrashlyticsPackage()
       );
     }
 
