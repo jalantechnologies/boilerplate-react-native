@@ -1,8 +1,8 @@
 import I18n from "i18n-js";
 import * as RNLocalize from "react-native-localize";
 
-import de from "../locales/de";
-import en from "../locales/en";
+import de from "../assets/locales/de";
+import en from "../assets/locales/en";
 const locales = RNLocalize.getLocales();
 
 if (Array.isArray(locales)) {
