@@ -1,4 +1,4 @@
-package com.boilerplatereactnative;
+package com.jalantechnologies.boilerplate;
 
 import com.facebook.react.ReactActivity;
 

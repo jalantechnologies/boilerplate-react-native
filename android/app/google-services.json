@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:334502595720:android:8dd77c44be3dc2c9",
+        "mobilesdk_app_id": "1:334502595720:android:dc0577306c3d3d1f",
         "android_client_info": {
-          "package_name": "com.boilerplatereactnative"
+          "package_name": "com.jalantechnologies.boilerplate"
         }
       },
       "oauth_client": [
