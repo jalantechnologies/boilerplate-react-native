@@ -1,6 +1,26 @@
 version: 2
 jobs:
-  
+  build:
+    docker:
+    - image: circleci/node:10.14.1
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        - v1-dependencies-
+    - run:
+        name: Install dependencies
+        command: npm install
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+    - persist_to_workspace:
+        root: /home/circleci/project
+        paths:
+        - node_modules/*
+        - dist/*
   lint:
     docker:
     - image: circleci/node:10.14.1
@@ -23,7 +43,12 @@ jobs:
         command: npm run test
 workflows:
   version: 2
-  build_lint:
+  build_test_lint:
     jobs:
-    - lint
-    - test
+    - build
+    - lint:
+        requires:
+        - build
+    - test:
+        requires:
+        - build
