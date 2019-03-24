@@ -5,7 +5,11 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "tslint 'src/**/*.{ts,tsx}'"
+    "lint": "tslint 'src/**/*.{ts,tsx}'",
+    "android-clean": "cd android && ./gradlew clean",
+    "android-build-debug": "cd android/ && ./gradlew assembleDebug",
+    "android-bundle": "react-native bundle --platform android --dev false --entry-file Todo/index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "android-release": "cd android && ./gradlew assembleRelease"
   },
   "husky": {
     "hooks": {
