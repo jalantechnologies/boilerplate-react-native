@@ -53,7 +53,7 @@ jobs:
         command: mkdir android/app/src/main/assets
     - run:
         name: accept License 
-        command: yes | sdkmanager --licenses && yes
+        command: yes | sdkmanager --licenses || exit 0
     - run:
         name: Android clean 
         command: npm run android-clean
