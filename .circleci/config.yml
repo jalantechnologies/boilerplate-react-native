@@ -90,11 +90,8 @@ jobs:
         name: export release keystore 
         command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > android/app/boilerplate.keystore
     - run:
-        name: print gradle properties
+        name: export env to gradle properties
         command: source android/environmentSetup.sh && copyEnvVarsToGradleProperties
-    - run:
-        name: export env to gradle properties 
-        command: cat android/gradle.properties
     - run:
         name: Android release build
         command: npm run build-android-release
@@ -107,6 +104,15 @@ workflows:
   build_test_lint:
     jobs:
     - build
+    - lint:
+        requires:
+        - build
+    - test:
+        requires:
+        - build
+    - android:
+        requires:
+        - build
     - release:
         requires:
         - build
