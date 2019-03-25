@@ -91,7 +91,7 @@ release:
         command: echo $RELEASE_KEYSTORE_BASE64 | base64 -d > android/app/boilerplate.keystore
     - run:
         name: export env to gradle properties 
-        command: - source android/environmentSetup.sh && copyEnvVarsToGradleProperties
+        command: source android/environmentSetup.sh && copyEnvVarsToGradleProperties
     - run:
         name: Android release build
         command: npm run build-android-release
