@@ -67,7 +67,7 @@ jobs:
         path: android/app/src/main/assets
     - store_artifacts:
         path: android/app/build/outputs/apk/debug
-release:
+  release:
     docker:
       - image: circleci/android:api-27-node8-alpha
     steps:
