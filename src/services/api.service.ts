@@ -1,4 +1,4 @@
-import CONFIG from "../config";
+import { Config } from "react-native-config";
 
 export class APIService {
   public static Methods = {
@@ -8,7 +8,7 @@ export class APIService {
     DELETE: "DELETE",
     PUT: "PUT"
   };
-  public static Endpoint = CONFIG.apiEndpoint;
+  // public static Endpoint = CONFIG.apiEndpoint;
   // default headers
   public static headers = {};
 
@@ -24,7 +24,7 @@ export class APIService {
     if (language) {
       headers["Accept-Language"] = language;
     }
-    return fetch(`${CONFIG.apiEndpoint}/${url}`, {
+    return fetch(`${Config.API_ENDPOINT_URL}/${url}`, {
       method,
       headers,
       body: data

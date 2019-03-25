@@ -6,10 +6,16 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
+    "android-dev": "ENVFILE=.env.dev react-native run-android",
+    "android-staging": "ENVFILE=.env.staging react-native run-android",
+    "android-prod": "ENVFILE=.env.prod react-native run-android",
+    "ios-dev": "ENVFILE=.env.dev react-native run-android",
+    "ios-staging": "ENVFILE=.env.staging react-native run-android",
+    "ios-prod": "ENVFILE=.env.prod react-native run-android",
     "android-clean": "cd android && ./gradlew clean",
-    "android-build-debug": "cd android/ && ./gradlew assembleDebug",
     "android-bundle": "react-native bundle --platform android --dev false --entry-file Todo/index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
-    "android-release": "cd android && ./gradlew assembleRelease"
+    "build-android-debug": "export ENVFILE=.env.dev && cd android/ && ./gradlew assembleDebug",
+    "build-android-release": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease"
   },
   "husky": {
     "hooks": {
@@ -26,6 +32,7 @@
     "i18n-js": "^3.2.1",
     "react": "16.8.3",
     "react-native": "0.59.1",
+    "react-native-config": "^0.11.7",
     "react-native-firebase": "^5.2.3",
     "react-native-localize": "^1.1.0"
   },
