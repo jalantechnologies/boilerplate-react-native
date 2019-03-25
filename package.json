@@ -13,7 +13,7 @@
     "ios-staging": "ENVFILE=.env.staging react-native run-android",
     "ios-prod": "ENVFILE=.env.prod react-native run-android",
     "android-clean": "cd android && ./gradlew clean",
-    "android-bundle": "react-native bundle --platform android --dev false --entry-file Todo/index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "android-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "build-android-debug": "export ENVFILE=.env.dev && cd android/ && ./gradlew assembleDebug",
     "build-android-release": "export ENVFILE=.env.prod && cd android && ./gradlew assembleRelease"
   },

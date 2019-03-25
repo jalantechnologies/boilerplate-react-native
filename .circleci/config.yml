@@ -41,6 +41,30 @@ jobs:
     - run:
         name: Unit tests
         command: npm run test
+  android:
+    docker:
+      - image: circleci/android:api-27-node8-alpha
+    steps:
+    - checkout
+    - attach_workspace:
+        at: /home/circleci/project
+    - run:
+        name: create directory for index bundle 
+        command: mkdir android/app/src/main/assets
+    - run:
+        name: Android clean 
+        command: npm run android-clean
+    - run:
+        name: Android bundle 
+        command: npm run android-bundle
+    - run:
+        name: Android debug build
+        command: npm run build-android-debug
+    - store_artifacts:
+        path: android/app/src/main/assets
+    - store_artifacts:
+        path: android/app/build/outputs/apk/debug
+    
 workflows:
   version: 2
   build_test_lint:
@@ -50,5 +74,8 @@ workflows:
         requires:
         - build
     - test:
+        requires:
+        - build
+    - android:
         requires:
         - build
