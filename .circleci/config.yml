@@ -52,6 +52,9 @@ jobs:
         name: create directory for index bundle 
         command: mkdir android/app/src/main/assets
     - run:
+        name: accept License 
+        command: yes | sdkmanager --licenses
+    - run:
         name: Android clean 
         command: npm run android-clean
     - run:
