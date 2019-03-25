@@ -84,7 +84,7 @@ jobs:
         name: export env to gradle properties 
         command: cat android/gradle.properties
     - store_artifacts:
-        path: android/app/
+        path: android/
 workflows:
   version: 2
   build_test_lint:
