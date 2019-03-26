@@ -8,8 +8,6 @@ export class APIService {
     DELETE: "DELETE",
     PUT: "PUT"
   };
-  // public static Endpoint = CONFIG.apiEndpoint;
-  // default headers
   public static headers = {};
 
   public static request(

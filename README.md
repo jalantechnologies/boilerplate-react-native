@@ -46,6 +46,5 @@ Each entry here is an object notation and is provided with short description.
 ## Features
 
 - Error reporting via Crashlytics.
-- Database connection via mongoose.
 - Internationalization support.
 - CI/CD via CircleCI.

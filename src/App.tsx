@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { THEME_COLORS } from "./assets/styles/colors";
 import I18n from "./helpers/i18n";
 import { getUserDeviceLanguage } from "./helpers/localize";
 import { APIService } from "./services";
@@ -23,8 +24,8 @@ export default class App extends Component<{}, State> {
         <Button
           onPress={this.onPressPing}
           title={I18n.t("ping")}
-          color="#841584"
-          accessibilityLabel="Ping Button"
+          color={THEME_COLORS.darkBackground}
+          accessibilityLabel={I18n.t("ping_here")}
           testID="pingButton"
         />
         <Text style={styles.message}>{this.state.message}</Text>
@@ -54,12 +55,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: THEME_COLORS.lightBackground
   },
   message: {
     fontSize: 18
   },
   error: {
-    color: "#FF0000"
+    color: THEME_COLORS.errorText
   }
 });
