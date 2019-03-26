@@ -9,9 +9,9 @@
     "android-dev": "ENVFILE=.env.dev react-native run-android",
     "android-staging": "ENVFILE=.env.staging react-native run-android",
     "android-prod": "ENVFILE=.env.prod react-native run-android",
-    "ios-dev": "ENVFILE=.env.dev react-native run-android",
-    "ios-staging": "ENVFILE=.env.staging react-native run-android",
-    "ios-prod": "ENVFILE=.env.prod react-native run-android",
+    "ios-dev": "ENVFILE=.env.dev react-native run-ios",
+    "ios-staging": "ENVFILE=.env.staging react-native run-ios",
+    "ios-prod": "ENVFILE=.env.prod react-native run-ios",
     "android-clean": "cd android && ./gradlew clean",
     "android-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "build-android-debug": "export ENVFILE=.env.dev && cd android/ && ./gradlew assembleDebug",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "i18n-js": "^3.2.1",
-    "react": "16.8.3",
-    "react-native": "0.59.1",
+    "react": "16.6.3",
+    "react-native": "0.58.5",
     "react-native-config": "^0.11.7",
     "react-native-firebase": "^5.2.3",
     "react-native-localize": "^1.1.0"
@@ -54,6 +54,7 @@
     "lint-staged": "^8.1.5",
     "metro-react-native-babel-preset": "^0.53.1",
     "prettier": "^1.16.4",
+    "react-dom": "^16.8.5",
     "react-test-renderer": "16.8.3",
     "ts-jest": "^24.0.0",
     "tslint": "^5.14.0",
@@ -63,6 +64,24 @@
     "typescript": "^3.3.3333"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.jest.json"
+      }
+    },
+    "setupFiles": [
+      "./setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
   }
 }
