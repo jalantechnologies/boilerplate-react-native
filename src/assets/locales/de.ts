@@ -1,5 +1,6 @@
 export default {
   hello: "Hallo",
   ping_here: "Ping Here",
-  ping: "Klingeln"
+  ping: "Klingeln",
+  network_error: "Netzwerkfehler"
 };

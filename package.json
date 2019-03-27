@@ -29,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "i18n-js": "^3.2.1",
     "react": "16.6.3",
     "react-native": "0.58.5",

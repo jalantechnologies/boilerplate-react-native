@@ -1,18 +1,19 @@
+import axios from "axios";
 import { Config } from "react-native-config";
-
 export class APIService {
   public static Methods = {
-    GET: "GET",
-    POST: "POST",
-    PATCH: "PATCH",
-    DELETE: "DELETE",
-    PUT: "PUT"
+    GET: "get",
+    POST: "post",
+    PATCH: "patch",
+    DELETE: "delete",
+    PUT: "put"
   };
   public static headers = {};
 
   public static request(
     method: string,
     url: string,
+    axiosSource: any,
     language?: string,
     data?: object
   ) {
@@ -22,10 +23,14 @@ export class APIService {
     if (language) {
       headers["Accept-Language"] = language;
     }
-    return fetch(`${Config.API_ENDPOINT_URL}/${url}`, {
+    return axios({
       method,
+      url: `${Config.API_ENDPOINT_URL}/${url}`,
+      data,
       headers,
-      body: data
-    });
+      cancelToken: axiosSource.token
+    })
+      .then(response => response)
+      .catch(error => error);
   }
 }

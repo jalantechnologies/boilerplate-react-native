@@ -1,13 +1,14 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { THEME_COLORS } from "./assets/styles/colors";
 import I18n from "./helpers/i18n";
 import { getUserDeviceLanguage } from "./helpers/localize";
 import { APIService } from "./services";
-
 interface State {
   message: string;
   errorText: string;
+  axiosSource: any;
 }
 
 export default class App extends Component<{}, State> {
@@ -15,8 +16,12 @@ export default class App extends Component<{}, State> {
     super(props);
     this.state = {
       message: "",
-      errorText: ""
+      errorText: "",
+      axiosSource: axios.CancelToken.source()
     };
+  }
+  public componentWillUnmount() {
+    this.state.axiosSource.cancel();
   }
   public render() {
     return (
@@ -33,14 +38,18 @@ export default class App extends Component<{}, State> {
       </View>
     );
   }
-  private onPressPing = () => {
-    APIService.request(APIService.Methods.GET, "ping", getUserDeviceLanguage())
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setMessage(responseJson.message);
+  public onPressPing = () => {
+    APIService.request(
+      APIService.Methods.GET,
+      "ping",
+      this.state.axiosSource,
+      getUserDeviceLanguage()
+    )
+      .then(response => {
+        this.setMessage(response.data.message);
       })
-      .catch(error => {
-        this.setErrorText(error);
+      .catch(() => {
+        this.setErrorText(I18n.t("network_error"));
       });
   };
   private setMessage(message: string): void {
