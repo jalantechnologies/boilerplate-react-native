@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "jest --verbose false",
     "lint": "tslint 'src/**/*.{ts,tsx}'",
     "android-dev": "ENVFILE=.env.dev react-native run-android",
     "android-staging": "ENVFILE=.env.staging react-native run-android",
@@ -47,6 +47,7 @@
     "@types/react": "^16.8.8",
     "@types/react-native": "^0.57.41",
     "@types/react-test-renderer": "^16.8.1",
+    "axios-mock-adapter": "^1.16.0",
     "babel-jest": "^24.5.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
