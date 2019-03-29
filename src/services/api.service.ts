@@ -10,9 +10,9 @@ export class APIService {
   };
   public static headers = {};
 
-  public static request(
+  public static async request(
     method: string,
-    url: string,
+    urlSuffix: string,
     axiosSource: any,
     language?: string,
     data?: object
@@ -23,14 +23,21 @@ export class APIService {
     if (language) {
       headers["Accept-Language"] = language;
     }
-    return axios({
-      method,
-      url: `${Config.API_ENDPOINT_URL}/${url}`,
-      data,
-      headers,
-      cancelToken: axiosSource.token
-    })
-      .then(response => response)
-      .catch(error => error);
+    try {
+      const response = await axios({
+        method,
+        url: `${Config.API_ENDPOINT_URL}/${urlSuffix}`,
+        data,
+        headers,
+        cancelToken: axiosSource.token
+      });
+      if (response.status === 200) {
+        return response.data;
+      } else {
+        return new Error(response.statusText);
+      }
+    } catch (error) {
+      throw error;
+    }
   }
 }

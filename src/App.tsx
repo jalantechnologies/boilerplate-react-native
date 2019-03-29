@@ -5,6 +5,7 @@ import { THEME_COLORS } from "./assets/styles/colors";
 import I18n from "./helpers/i18n";
 import { getUserDeviceLanguage } from "./helpers/localize";
 import { APIService } from "./services";
+
 interface State {
   message: string;
   errorText: string;
@@ -38,19 +39,18 @@ export default class App extends Component<{}, State> {
       </View>
     );
   }
-  public onPressPing = () => {
-    APIService.request(
-      APIService.Methods.GET,
-      "ping",
-      this.state.axiosSource,
-      getUserDeviceLanguage()
-    )
-      .then(response => {
-        this.setMessage(response.data.message);
-      })
-      .catch(() => {
-        this.setErrorText(I18n.t("network_error"));
-      });
+  public onPressPing = async () => {
+    try {
+      const response = await APIService.request(
+        APIService.Methods.GET,
+        "ping",
+        this.state.axiosSource,
+        getUserDeviceLanguage()
+      );
+      this.setMessage(response.message);
+    } catch (error) {
+      this.setErrorText(I18n.t("network_error"));
+    }
   };
   private setMessage(message: string): void {
     this.setState({ message });
