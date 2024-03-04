@@ -11,7 +11,6 @@ const Home: React.FC = () => {
   const { t } = useTranslation();
   const styles = useStyles();
   const themeMode = useThemeMode();
-
   const [name, setName] = useState('');
   const [submitLoader, setSubmitLoader] = useState(false);
   const [catFact, setCatFact] = useState('');
@@ -77,6 +76,7 @@ const Home: React.FC = () => {
             value={name}
             onChangeText={handleNameChange}
             errorMessage={errorMessage}
+            containerStyle={styles.welcomeContainer}
           />
           <CustomButton
             onPress={handleBtnSubmit}
