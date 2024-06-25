@@ -1,7 +1,6 @@
+import { Box, Heading } from 'native-base';
 import React from 'react';
-import { View, DimensionValue } from 'react-native';
-import { styles } from './styles';
-import { Text } from '@rneui/themed';
+import { DimensionValue } from 'react-native';
 
 type Props = {
   height?: DimensionValue;
@@ -10,12 +9,15 @@ type Props = {
 
 const Brand: React.FC<Props> = ({ height, width }: Props) => {
   return (
-    <View
+    <Box
       testID="brand-img-wrapper"
-      style={[styles.brandContainer, { height, width }]}
+      height={`${height}px`}
+      width={`${width}px`}
+      justifyContent="center"
+      alignItems="center"
     >
-      <Text h1>Jalan Technologies</Text>
-    </View>
+      <Heading>Jalan Technologies</Heading>
+    </Box>
   );
 };
 

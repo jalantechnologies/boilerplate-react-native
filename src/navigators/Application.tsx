@@ -9,7 +9,7 @@ import { Startup } from '../screens';
 import MainNavigator from './main';
 import { useFlipper } from '@react-navigation/devtools';
 import { ApplicationStackParamList } from '../../@types/navigation';
-import { appStyle } from '../app-styles';
+import tw from '../lib/tailwind';
 
 const Stack = createStackNavigator<ApplicationStackParamList>();
 
@@ -20,7 +20,7 @@ const ApplicationNavigator = () => {
   useFlipper(navigationRef);
 
   return (
-    <SafeAreaView style={appStyle.appContainer}>
+    <SafeAreaView style={tw`flex w-full h-full`}>
       <NavigationContainer ref={navigationRef}>
         <StatusBar />
         <Stack.Navigator screenOptions={{ headerShown: false }}>

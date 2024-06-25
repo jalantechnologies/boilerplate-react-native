@@ -1,2 +1,4 @@
 export { default as Startup } from './startup/startup';
-export { default as Home } from './home/home';
+export { default as PhoneAuth } from './auth/phone-auth';
+export { default as OTPVerify } from './auth/otp-verify';
+export { default as Dashboard } from './dashboard';

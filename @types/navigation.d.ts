@@ -1,8 +1,14 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 
+export type AuthenticatedParamsList = {
+  Dashboard: undefined;
+};
+
 export type MainParamsList = {
-  Home: undefined;
+  PhoneAuth: undefined;
+  OTPVerify: undefined;
+  Authenticated: NavigatorScreenParams<AuthenticatedParamsList>;
 };
 
 export type ApplicationStackParamList = {

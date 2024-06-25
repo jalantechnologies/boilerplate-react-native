@@ -7,33 +7,37 @@ import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
-import { CatContextProvider } from './contexts';
+import { AccountProvider, AuthProvider, CatContextProvider } from './contexts';
 import { ErrorFallback } from './components';
-import { ThemeProvider } from '@rneui/themed';
 import appTheme from './app-theme';
 import { DatadogProvider } from '@datadog/mobile-react-native';
 import DatadogConfig from './services/datadog';
 import Logger from './logger/logger';
+import { NativeBaseProvider } from 'native-base';
 
 const App = () => {
   Logger.initializeLoggers();
   const ErrorComponent = useCallback(() => <ErrorFallback />, []);
 
   return (
-    <ErrorBoundary
-      onError={(e, stack) => Logger.error(`App Error: ${e} ${stack}`)}
-      FallbackComponent={ErrorComponent}
-    >
-      <DatadogProvider configuration={DatadogConfig}>
-        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <CatContextProvider>
-            <ThemeProvider theme={appTheme}>
-              <ApplicationNavigator />
-            </ThemeProvider>
-          </CatContextProvider>
-        </SafeAreaProvider>
-      </DatadogProvider>
-    </ErrorBoundary>
+    <NativeBaseProvider theme={appTheme}>
+      <ErrorBoundary
+        onError={(e, stack) => Logger.error(`App Error: ${e} ${stack}`)}
+        FallbackComponent={ErrorComponent}
+      >
+        <DatadogProvider configuration={DatadogConfig}>
+          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+            <CatContextProvider>
+              <AuthProvider>
+                <AccountProvider>
+                  <ApplicationNavigator />
+                </AccountProvider>
+              </AuthProvider>
+            </CatContextProvider>
+          </SafeAreaProvider>
+        </DatadogProvider>
+      </ErrorBoundary>
+    </NativeBaseProvider>
   );
 };
 
