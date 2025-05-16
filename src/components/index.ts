@@ -3,3 +3,7 @@ export { default as ErrorFallback } from './error-fallback/error-fallback';
 export { default as OTPInput } from './otp-input/otp-input';
 export { default as Spinner } from './spinner/spinner';
 export { default as FullScreenSpinner } from './spinner/full-screen-spinner';
+export { default as Modal } from './modal/modal';
+export { default as ModalBody } from './modal/modal-body.component';
+export { default as ModalFooter } from './modal/modal-footer.component';
+export { default as ModalHeader } from './modal/modal-header.component';
