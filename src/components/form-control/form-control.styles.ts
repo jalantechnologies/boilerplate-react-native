@@ -18,7 +18,6 @@ export const useFormControlStyles = () => {
     },
     inputContainer: {
       position: 'relative',
-      borderWidth: theme.radii.xs,
     },
     error: {
       color: theme.colors.danger['500'],

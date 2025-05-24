@@ -1,4 +1,5 @@
-import { Button, Container, FormControl, Heading, Input, VStack } from 'native-base';
+import { Button, FormControl, Input } from 'boilerplate-react-native/src/components';
+import { Container, Heading, VStack } from 'native-base';
 import React from 'react';
 
 import { AsyncError } from '../../../types';
@@ -24,27 +25,21 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess, onError 
           Please fill the form to create an account
         </Heading>
       </Container>
-      <FormControl
-        isRequired={true}
-        isInvalid={formik.touched.firstName && Boolean(formik.errors.firstName)}
-      >
-        <FormControl.Label>First Name</FormControl.Label>
+      <FormControl label={'First Name'} error={formik.errors.firstName}>
         <Input
           onChangeText={formik.handleChange('firstName')}
           value={formik.values.firstName}
           placeholder="First Name"
         />
-        <FormControl.ErrorMessage>{formik.errors.firstName}</FormControl.ErrorMessage>
       </FormControl>
-      <FormControl isRequired={false}>
-        <FormControl.Label>Last Name</FormControl.Label>
+      <FormControl label={'Last Name'} error={formik.errors.lastName}>
         <Input
           onChangeText={formik.handleChange('lastName')}
           value={formik.values.lastName}
           placeholder="Last Name"
         />
       </FormControl>
-      <Button onPress={() => formik.handleSubmit()} isLoading={isUpdateAccountLoading}>
+      <Button onClick={() => formik.handleSubmit()} isLoading={isUpdateAccountLoading}>
         Create Account
       </Button>
     </VStack>
